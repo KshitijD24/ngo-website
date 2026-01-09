@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="programs-section">
+  <h2 class="section-title">Our Programs</h2>
+
+  <div class="programs-grid">
+
+    <!-- Program 1 -->
+    <div class="program-card">
+      <div class="program-gallery">
+        <img src="{{ url_for('static', filename='images/programs/education.png') }}"class="clickable-img"onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/education1.jpeg') }}"class="clickable-img"onclick="openModal(this)">
+      </div>
+      <small class="image-hint">🔍 Click to enlarge</small>
+      <div class="program-content">
+        <h3>EDUCATION & LITERACY</h3>
+        <p>On April 7, 2018, 25 students adopted by Aadhar 
+Foundation for Mechanical Engineering Education 
+were felicitated for their brilliant achievements. 
+Special awards were given to the students studying 
+at Abhinav Engineering College Bhor through 
+Aadhar Foundation. All the students are working in 
+reputed companies in Pune and Mumbai. Aadhar 
+Foundation kept its promise made to them.</p>
+      </div>
+    </div>
+
+    <!-- Program 2 -->
+    <div class="program-card">
+      <div class="program-gallery">
+        <img src="{{ url_for('static', filename='images/programs/health.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/health2.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/health3.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+      </div>
+      <small class="image-hint">🔍 Click to enlarge</small>
+      <div class="program-content">
+        <h3>HEALTH & SANITATION</h3>
+        <p>NGO Aadhar Foundation organizes free medical camps in rural and urban areas to improve healthcare access for underprivileged communities. Services include diabetes, blood pressure, and haemoglobin testing, medical consultation by qualified doctors, free medicines, and nutritional support for malnourished and elderly individuals.</p>
+      </div>
+    </div>
+
+    <!-- Program 3 -->
+    <div class="program-card">
+      <div class="program-gallery">
+        <img src="{{ url_for('static', filename='images/programs/women.png') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/women1.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/women2.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+      </div>
+      <small class="image-hint">🔍 Click to enlarge</small>
+      <div class="program-content">
+        <h3>WOMEN EMPOWERMENT</h3>
+        <p>Women, especially poor women in rural areas, remain the invisible 
+backbone of their households and communities. However, their many 
+disadvantages - poor education, limited opportunities for skills 
+training, few property rights, and restrictive social norms - mean low
+paying labour work is often their only option. Whatever they earn is 
+almost always spent on improving the quality of life of their families.<br>
+Our program aims to provide these women with opportunities to earn 
+independent incomes, helping to strengthen their position as decision
+makers in their families and in their communities. There is a special 
+focus on ultra-poor women - those living in extreme poverty that are 
+the only earning members of their families and have no assets or 
+regular incomes.</p>
+      </div>
+    </div>
+
+    <!-- Program 4 -->
+    <div class="program-card">
+      <div class="program-gallery">
+        <img src="{{ url_for('static', filename='images/programs/tribal.png') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/tribal1.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/tribal2.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+      </div>
+      <small class="image-hint">🔍 Click to enlarge</small>
+      <div class="program-content">
+        <h3>TRIBAL / ADIVASI DEVELOPMENT</h3>
+        <p>When the COVID-19 pandemic arrived NGO Aadhar Foundation 
+Bahuuddeshiy Sevabhavi Sanstha Mahad, Dist. Raigad engaged 
+in a rapid assessment of the situation among communities like 
+Adivasis, Dhangars, Tribal, daily wage workers and even migrant 
+workers and realized that the situation of the workers was far more 
+complicated and needed immediate help especially in terms of food, 
+grains and clothes and medical help.<br>
+NGO Aadhar foundation and civil society groups, and charity 
+organizations have come forward to distribute free food and ration 
+packets to hundreds of daily wagers rendered jobless due to the 
+current lockdown.</p>
+      </div>
+    </div>
+
+    <!-- Program 5 -->
+    <div class="program-card">
+      <div class="program-gallery">
+        <img src="{{ url_for('static', filename='images/programs/disability.png') }}" class="clickable-img" onclick="openModal(this)">
+        <img src="{{ url_for('static', filename='images/programs/disability1.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+      </div>
+      <small class="image-hint">🔍 Click to enlarge</small>
+      <div class="program-content">
+        <h3>WORK ON SUPPORTING PERSONS WITH DISABILITY (PHYSICALLY / VISUALY / CHALLENGED)</h3>
+        <p>On the occasion of World Health Day 2018-19; Aadhar Foundation 
+as committed provided health care, self employment and vocational 
+opportunities as well as educational facilities to blind, disabled and 
+mentally retarded children, girls, women and men in the society.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

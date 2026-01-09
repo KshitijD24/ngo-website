@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="gallery-section">
+  <h2 class="section-title">Our Work</h2>
+
+  <!-- PHOTOS -->
+  <h3 class="gallery-subtitle">Photos</h3>
+  <div class="gallery-grid">
+
+    <img src="{{ url_for('static', filename='images/programs/women1.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/women.png') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/women2.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/slide6.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/slide1.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/slide2.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/slide4.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/education.png') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/education1.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/disability.png') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/disability1.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/health.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/health2.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+    <img src="{{ url_for('static', filename='images/programs/health3.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/tribal.png') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/tribal1.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+
+    <img src="{{ url_for('static', filename='images/programs/tribal2.jpeg') }}"
+         onclick="openModal(this)" class="gallery-img">
+    
+
+  </div>
+
+  <!-- VIDEOS -->
+  <h3 class="gallery-subtitle">Videos</h3>
+  <div class="gallery-grid">
+
+    <video controls class="gallery-video">
+      <source src="{{ url_for('static', filename='videos/video1.mp4') }}" type="video/mp4">
+    </video>
+
+    <video controls class="gallery-video">
+      <source src="{{ url_for('static', filename='videos/video2.mp4') }}" type="video/mp4">
+    </video>
+
+  </div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div id="imgModal" class="modal">
+  <span class="close-btn" onclick="closeModal()">&times;</span>
+
+  <button class="nav-arrow left" onclick="changeImage(-1)">&#10094;</button>
+  <img id="modalImg">
+  <button class="nav-arrow right" onclick="changeImage(1)">&#10095;</button>
+</div>
+
+<script>
+let galleryImages = [];
+let currentIndex = 0;
+
+// Collect gallery images after page loads
+document.addEventListener("DOMContentLoaded", () => {
+  galleryImages = Array.from(document.querySelectorAll(".gallery-img"));
+});
+
+function openModal(img) {
+  currentIndex = galleryImages.indexOf(img);
+  document.getElementById("modalImg").src = img.src;
+  document.getElementById("imgModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
+
+function changeImage(step) {
+  currentIndex += step;
+
+  if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+  if (currentIndex >= galleryImages.length) currentIndex = 0;
+
+  document.getElementById("modalImg").src = galleryImages[currentIndex].src;
+}
+
+/* Keyboard support */
+document.addEventListener("keydown", (e) => {
+  if (document.getElementById("imgModal").style.display === "flex") {
+    if (e.key === "ArrowRight") changeImage(1);
+    if (e.key === "ArrowLeft") changeImage(-1);
+    if (e.key === "Escape") closeModal();
+  }
+});
+</script>
+
+
+{% endblock %}

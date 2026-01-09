@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- HERO IMAGE SLIDER -->
+<section class="hero-slider">
+  <div class="slider">
+
+    <img src="{{ url_for('static', filename='images/slide4.jpeg') }}" class="slide active">
+    <img src="{{ url_for('static', filename='images/slide2.jpeg') }}" class="slide">
+    <img src="{{ url_for('static', filename='images/slide2.png') }}" class="slide">
+    <img src="{{ url_for('static', filename='images/slide1.jpeg') }}" class="slide">
+    <img src="{{ url_for('static', filename='images/slide5.jpeg') }}" class="slide">
+    <img src="{{ url_for('static', filename='images/slide6.jpeg') }}" class="slide">
+    
+
+    <div class="slider-dots">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+      <span class="dot" data-slide="4"></span>
+      <span class="dot" data-slide="5"></span>
+    </div>
+
+    <div class="hero-content">
+      <h1>Serving Humanity with Compassion</h1>
+      <p>Education • Healthcare • Community Development • Women Empowerment</p>
+      <div class="hero-buttons">
+        <a href="/donate" class="btn btn-outline">Donate Now</a>
+        <a href="/contact" class="btn btn-outline">Join Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="focus-section">
+  <h2 class="section-title">Our Focus Areas</h2>
+  
+  <div class="focus-grid">
+
+    <div class="focus-card">
+      <i class="fas fa-book-reader"></i>
+      <h3>Education & Literacy</h3>
+      <p>Promoting education and literacy among underprivileged communities.</p>
+    </div>
+
+    <div class="focus-card">
+      <i class="fas fa-hand-holding-medical"></i>
+      <h3>Health & Sanitation</h3>
+      <p>Improving health awareness, hygiene, and access to basic medical care.</p>
+    </div>
+
+    <div class="focus-card">
+      <i class="fas fa-child"></i>
+      <h3>Women & Child Welfare</h3>
+      <p>Ensuring safety, nutrition, education, and overall welfare.</p>
+    </div>
+
+    <div class="focus-card">
+      <i class="fas fa-female"></i>
+      <h3>Women Empowerment</h3>
+      <p>Encouraging independence through skill development and awareness.</p>
+    </div>
+
+    <div class="focus-card">
+      <i class="fas fa-people-roof"></i>
+      <h3>Tribal & Rural Development</h3>
+      <p>Supporting rural and tribal communities for sustainable growth.</p>
+    </div>
+
+    <div class="focus-card">
+      <i class="fas fa-wheelchair"></i>
+      <h3>Disability Support</h3>
+      <p>Providing care, support, and inclusion for persons with disabilities.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<div class="container">
+  <!-- IMPACT STATS -->
+  <section class="impact">
+    <div class="stat-item">
+      <h2>1K+</h2>
+      <p>Lives Impacted</p>
+    </div>
+    <div class="stat-item">
+      <h2>50+</h2>
+      <p>Volunteers</p>
+    </div>
+    <div class="stat-item">
+      <h2>60+</h2>
+      <p>Programs Done</p>
+    </div>
+  </section>
+
+  <!-- TRUST SECTION -->
+  <section class="trust">
+  <div class="trust-content">
+
+    <h2 class="trust-title">A Registered, Certified & Trustworthy Non-Profit Organization</h2>
+
+    <ul class="trust-list">
+      <li>
+        <i class="fa-solid fa-shield-halved"></i>
+        Trusted by supporters & donors across Maharashtra
+      </li>
+
+      <li>
+        <i class="fa-solid fa-certificate"></i>
+        12A, 80G and CSR-1 Certified
+      </li>
+
+      <li>
+        <i class="fa-solid fa-building-columns"></i>
+        CSR-1 Registered NGO
+      </li>
+
+      <li>
+        <i class="fa-solid fa-building"></i>
+        Registered under the Indian Societies Registration Act, 1860
+      </li>
+
+      <li class="reg-no">
+        Reg. No. MAH/293/F-13344/2018 (Raigad, Maharashtra)
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="trust-action">
+    <a href="/donate" class="donate-btn">Donate</a>
+  </div>
+</section>
+
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- ===== SOCIAL MEDIA SIDEBAR ===== -->
+<div class="social-sidebar">
+  <a href="https://www.facebook.com/aadharfoun/" target="_blank" class="facebook" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <a href="https://www.instagram.com/sunilahire9763?igsh=MWl6bGk0MHZvdTMzaA==" class="instagram" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://in.linkedin.com/in/sunil-ahire-a29a07363" class="linkedin" aria-label="LinkedIn">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <a href="https://wa.me/919359773727" class="whatsapp" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</div>
+
+
+{% endblock %}
+

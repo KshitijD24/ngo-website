@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="certifications-section">
+
+  <h2 class="section-title">Certifications & Awards</h2>
+  <p class="section-subtitle">
+    Recognitions and certifications that reflect our commitment, transparency,
+    and impact on society.
+  </p>
+
+  <!-- CERTIFICATIONS -->
+  <div class="cert-block">
+    <h3>Government & Legal Certifications</h3>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <img src="{{ url_for('static', filename='images/certifications/award3.png') }}" class="clickable-img" onclick="openModal(this)">
+        <p>Maharashtra Ratna Puraskar 2024</p>
+      </div>
+
+      <div class="cert-card">
+        <img src="{{ url_for('static', filename='images/certifications/award2.jpeg') }}" class="clickable-img" onclick="openModal(this)">
+        <p>Rashtriya SevaGaurav Puraskar</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARDS -->
+  <div class="cert-block">
+    <h3>Awards & Recognitions</h3>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <img src="{{ url_for('static', filename='images/awards/award1.png') }}" class="clickable-img" onclick="openModal(this)">
+        <p>Maharashtra Ratna Puraskar 2024</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}

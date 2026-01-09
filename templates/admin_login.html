@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="admin-login">
+    <h2>Admin Login</h2>
+    <p>Please enter your credentials to access the admin dashboard.</p>
+
+    <form method="POST" class="login-form">
+        <input 
+            type="text" 
+            name="username" 
+            placeholder="Admin Username" 
+            required
+        >
+
+        <input 
+            type="password" 
+            name="password" 
+            placeholder="Admin Password" 
+            required
+        >
+
+        <button type="submit" class="btn">Login</button>
+    </form>
+</section>
+{% endblock %}

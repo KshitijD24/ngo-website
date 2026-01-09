@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="admin-dashboard">
+
+  <h2 class="dashboard-title">✉️ Contact Details List</h2>
+
+  {% if contacts|length == 0 %}
+    <p class="no-data">No contact submissions yet.</p>
+  {% else %}
+
+  <div class="table-wrapper">
+    <table class="contact-table">
+      <thead>
+        <tr>
+          <th>Sr.</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for c in contacts %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ c[1] }}</td>
+          <td>{{ c[2] }}</td>
+          <td>{{ c[3] }}</td>
+          <td class="message-cell">{{ c[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% endif %}
+
+</section>
+
+{% endblock %}
