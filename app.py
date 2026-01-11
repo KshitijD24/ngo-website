@@ -1,5 +1,8 @@
-from flask import Flask, render_template, request, redirect, session
-import psycopg2
+from flask import Flask, render_template, request, redirect, session, flash
+from googlesheets import save_to_google_sheet, get_all_contacts
+import pandas as pd
+from flask import send_file
+import tempfile
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -7,21 +10,6 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev_secret_key")
-
-def get_db():
-    DATABASE_URL = os.environ.get("DATABASE_URL")
-
-    if DATABASE_URL:
-        # Render / Production
-        return psycopg2.connect(DATABASE_URL, sslmode="require")
-    else:
-        # Local development
-        return psycopg2.connect(
-            host=os.getenv("DB_HOST", "localhost"),
-            database=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD")
-        )
 
 
 @app.route('/')
@@ -48,30 +36,34 @@ def gallery():
 def donate():
     return render_template('donate.html')
 
-@app.route('/contact', methods=['GET','POST'])
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        phone = request.form['phone']
-        msg = request.form['message']
-
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("INSERT INTO contacts (name, email, phone, message) VALUES (%s, %s, %s, %s)",(name, email, phone, msg))
-        db.commit()
-        cursor.close()
-        db.close()
+        save_to_google_sheet(
+            request.form['name'],
+            request.form['email'],
+            request.form['phone'],
+            request.form['message']
+        )
         return redirect('/contact')
 
     return render_template('contact.html')
 
-@app.route('/admin', methods=['GET','POST'])
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     if request.method == 'POST':
-        if request.form['username']=='admin' and request.form['password']=='admin123':
-            session['admin']=True
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        admin_user = os.getenv("ADMIN_USERNAME")
+        admin_pass = os.getenv("ADMIN_PASSWORD")
+
+        if username == admin_user and password == admin_pass:
+            session['admin'] = True
             return redirect('/dashboard')
+        else:
+            flash("Invalid username or password", "danger")
+
     return render_template('admin_login.html')
 
 @app.route('/dashboard')
@@ -79,20 +71,29 @@ def dashboard():
     if not session.get('admin'):
         return redirect('/admin')
 
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("""
-    SELECT id, name, email, phone, message
-    FROM contacts
-    ORDER BY id DESC""")
-    contacts = cursor.fetchall()
-    cursor.close()
-    db.close()
+    contacts = get_all_contacts()
     return render_template('admin_dashboard.html', contacts=contacts)
+
+@app.route('/download-contacts')
+def download_contacts():
+    if not session.get('admin'):
+        return redirect('/admin')
+
+    contacts = get_all_contacts()
+    df = pd.DataFrame(contacts)
+
+    temp = tempfile.NamedTemporaryFile(delete=False, suffix=".xlsx")
+    df.to_excel(temp.name, index=False)
+
+    return send_file(
+        temp.name,
+        as_attachment=True,
+        download_name="ngo_contacts.xlsx"
+    )
 
 @app.route('/logout')
 def logout():
-    session.pop('admin',None)
+    session.pop('admin', None)
     return redirect('/')
 
 if __name__ == "__main__":

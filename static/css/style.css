@@ -555,13 +555,28 @@ footer {
 @media (max-width: 768px) {
   .nav-menu {
     position: absolute;
-    top: 70px;
-    right: 0;
-    background: #2e7d32;
+    top: 72px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     flex-direction: column;
-    width: 220px;
-    padding: 20px;
+    width: 240px;
+    padding: 18px;
     display: none;
+
+    border-radius: 18px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  }
+
+  .nav-menu a {
+    color: #1b5e20;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+
+  .nav-menu a:hover {
+    color: #1b5e20;
   }
 
   .nav-menu.show {
@@ -683,7 +698,7 @@ footer {
 
 .slider-dots {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1478,5 +1493,139 @@ footer {
   .impact {
     flex-direction: column;
     gap: 25px;
+  }
+}
+
+/* Base font size */
+html {
+  font-size: 16px;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE FIX ===== */
+@media (max-width: 768px) {
+
+    body {
+        font-size: 14px;
+    }
+
+    .hero,
+    .slider,
+    .carousel-item {
+        height: auto !important;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .hero h1,
+    .slider h1 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .hero p,
+    .slider p {
+        font-size: 14px;
+    }
+
+    .navbar-brand {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
+
+/* ===== HERO SLIDER FIX (DESKTOP + MOBILE) ===== */
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  overflow: hidden;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Images */
+.slide {
+  position: absolute;     /* KEY FIX */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Active slide */
+.slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Overlay content */
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  padding: 1rem;
+  width: 90%;
+}
+
+@media (max-width: 768px) {
+
+  .hero-slider {
+    height: 60vh;   /* Prevents long vertical scroll */
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 70vh;
+  }
+
+  .slide {
+    object-fit: cover;
+    object-position: center top; /* 👈 better crop */
   }
 }

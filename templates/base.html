@@ -1,13 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Aadhar Foundation</title>
+
+    <!-- BASIC SEO -->
+    <title>NGO Aadhar Foundation | Education, Healthcare & Community Development</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <meta charset="UTF-8">
+    <meta name="description" content="NGO Aadhar Foundation is a registered non-profit organization working for education, healthcare, women empowerment and community development across India.">
+    <meta name="keywords" content="NGO Aadhar Foundation, NGO in India, education NGO, healthcare NGO, women empowerment NGO, social work NGO, Maharashtra NGO">
+    <meta name="author" content="NGO Aadhar Foundation">
+    <meta name="robots" content="index, follow">
+
+    <!-- MOBILE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- OPEN GRAPH (SOCIAL MEDIA SEO) -->
+    <meta property="og:title" content="NGO Aadhar Foundation | Serving Humanity with Compassion">
+    <meta property="og:description" content="Supporting education, healthcare and community development initiatives across India.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.jpeg', _external=True) }}">
+    <meta property="og:url" content="https://www.yourwebsite.com">
+    <meta property="og:type" content="website">
+
+    <!-- FONTS & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
+<!-- TOP CONTACT INFO (GOOD FOR LOCAL SEO) -->
 <div class="top-info-bar">
   <div class="top-info-left">
     <span>
@@ -25,21 +50,23 @@
   </div>
 </div>
 
-
-<nav class="navbar">
+<!-- NAVIGATION -->
+<nav class="navbar" aria-label="Main Navigation">
   <div class="nav-container">
+
     <div class="nav-left" translate="no">
       <img src="{{ url_for('static', filename='images/logo.jpeg') }}" 
-      alt="NGO Logo" 
-      class="nav-logo">
-      <span translate="no" class="nav-title">NGO Aadhar Foundation</span>
+           alt="NGO Aadhar Foundation Logo"
+           class="nav-logo"
+           loading="lazy">
+      <span class="nav-title">NGO Aadhar Foundation</span>
     </div>
 
     <div class="nav-right">
       <ul class="nav-menu">
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/programs">Programs</a></li>
+        <li><a href="/programs">Our Programs</a></li>
         <li><a href="/certifications">Certifications & Awards</a></li>
         <li><a href="/gallery">Gallery</a></li>
         <li><a href="/donate">Donate</a></li>
@@ -48,57 +75,66 @@
     </div>
 
     <!-- Mobile Toggle -->
-    <div class="menu-toggle" id="menuToggle">
+    <div class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
       ☰
     </div>
 
+    <!-- LANGUAGE SWITCH -->
     <div class="language-switcher">
       <button onclick="setLanguage('en')">EN</button>
       <button onclick="setLanguage('hi')">हिंदी</button>
       <button onclick="setLanguage('mr')">मराठी</button>
     </div>
+
   </div>
 </nav>
 
-<div class="container">
-{% block content %}{% endblock %}
-</div>
+<!-- MAIN CONTENT -->
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
 
-<!-- Image Modal -->
+<!-- IMAGE MODAL -->
 <div id="imgModal" class="img-modal" onclick="closeModal()">
   <span class="close-btn">&times;</span>
-  <img id="modalImg">
+  <img id="modalImg" alt="Gallery Image">
 </div>
 
-<!-- Donate Modal -->
+<!-- DONATE MODAL -->
 <div id="donateModal" class="donate-modal">
   <div class="donate-card">
     <span class="close-btn" onclick="closeDonateModal()">×</span>
 
     <h2>Support Our Cause</h2>
-    <img src="{{ url_for('static', filename='images/qr.jpeg') }}" class="qr-img">
+    <img src="{{ url_for('static', filename='images/qr.jpeg') }}"
+         alt="Donate QR Code for NGO Aadhar Foundation"
+         class="qr-img"
+         loading="lazy">
 
     <p class="scan-text">Scan the QR Code to Donate</p>
 
     <div class="donate-details">
-      <p><strong>UPI ID:</strong> </p>
-      <p><strong>Account Name:</strong> M/S. NGO AADHAR FOUNDATION BAHUUDDESHIY SEVABHAVI SANSTHA FAUJI AMBAVADE</p>
+      <p><strong>Account Name:</strong> NGO AADHAR FOUNDATION</p>
       <p><strong>Account Number:</strong> 147805004213</p>
+      <p><strong>IFSC Code:</strong> ICIC0001478</p>
     </div>
   </div>
 </div>
 
-<footer>© All rights reserved.2026 Aadhar Foundation NGO</footer>
+<!-- FOOTER -->
+<footer>
+  © 2026 NGO Aadhar Foundation. All Rights Reserved.
+</footer>
+
+<!-- SCRIPTS -->
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 <div id="google_translate_element" style="display:none;"></div>
+
 <script>
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
-    {
-      pageLanguage: 'en',
-      includedLanguages: 'en,hi,mr',
-      autoDisplay: false
-    },
+    { pageLanguage: 'en', includedLanguages: 'en,hi,mr', autoDisplay: false },
     'google_translate_element'
   );
 }
@@ -107,12 +143,7 @@ function googleTranslateElementInit() {
 <script>
 function setLanguage(lang) {
   let select = document.querySelector(".goog-te-combo");
-
-  if (!select) {
-    alert("Translator not loaded yet. Please try again.");
-    return;
-  }
-
+  if (!select) return;
   select.value = lang;
   select.dispatchEvent(new Event("change"));
 }
@@ -129,7 +160,6 @@ function openModal(img) {
   document.getElementById("imgModal").style.display = "flex";
   document.getElementById("modalImg").src = img.src;
 }
-
 function closeModal() {
   document.getElementById("imgModal").style.display = "none";
 }

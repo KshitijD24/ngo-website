@@ -18,6 +18,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Message</th>
+          <th>Date</th>
         </tr>
       </thead>
 
@@ -25,18 +26,25 @@
         {% for c in contacts %}
         <tr>
           <td>{{ loop.index }}</td>
-          <td>{{ c[1] }}</td>
-          <td>{{ c[2] }}</td>
-          <td>{{ c[3] }}</td>
-          <td class="message-cell">{{ c[4] }}</td>
+          <td>{{ c.Name }}</td>
+          <td>{{ c.Email }}</td>
+          <td>{{ c.Phone }}</td>
+          <td class="message-cell">{{ c.Message }}</td>
+          <td>{{ c.Date }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
 
-  {% endif %}
+ 
 
+  {% endif %}
+  <br>
+  <a href="/download-contacts" class="btn">
+    Download Excel
+  </a>
 </section>
 
 {% endblock %}
+
