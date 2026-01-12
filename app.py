@@ -4,6 +4,7 @@ import pandas as pd
 from flask import send_file
 import tempfile
 import os
+from flask import Response
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -96,5 +97,32 @@ def logout():
     session.pop('admin', None)
     return redirect('/')
 
+@app.route('/sitemap.xml')
+def sitemap():
+    pages = [
+        "",
+        "about",
+        "programs",
+        "gallery",
+        "certifications",
+        "donate",
+        "contact"
+    ]
+
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+
+    for page in pages:
+        xml.append(f"""
+        <url>
+            <loc>https://www.ngoaadharfoundation.org.in/{page}</loc>
+            <changefreq>weekly</changefreq>
+            <priority>0.7</priority>
+        </url>
+        """)
+
+    xml.append('</urlset>')
+    return Response("".join(xml), mimetype='application/xml')
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
