@@ -150,10 +150,33 @@ function setLanguage(lang) {
 </script>
 
 <script>
-document.getElementById("menuToggle").onclick = function () {
-  document.querySelector(".nav-menu").classList.toggle("show");
-};
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.querySelector(".nav-menu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  // Toggle menu on hamburger click
+  menuToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    navMenu.classList.toggle("show");
+  });
+
+  // Close menu when any link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("show");
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (e) {
+    if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+      navMenu.classList.remove("show");
+    }
+  });
+});
 </script>
+
 
 <script>
 function openModal(img) {
