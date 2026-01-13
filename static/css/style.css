@@ -554,37 +554,98 @@ footer {
 /* Responsive */
 @media (max-width: 768px) {
   .nav-menu {
-    position: absolute;
-    top: 72px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+    background: #ffffff;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    padding: 60px 20px 30px;
+    display: flex;
     flex-direction: column;
-    width: 240px;
-    padding: 18px;
-    display: none;
+    gap: 14px;
+    transition: right 0.3s ease;
+    z-index: 1001;
+  }
+  
+  .nav-menu.show {
+    right: 0;
+  }
 
-    border-radius: 18px;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  .nav-menu li a {
+    font-size: 18px;
+    color: #2e7d32;
+    font-weight: 600;
+    list-style: none;
   }
 
   .nav-menu a {
-    color: #1b5e20;
-    font-weight: 600;
-    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #2e7d32;
+    text-decoration: none;
+    padding: 6px 0;
+    display: block;
   }
 
   .nav-menu a:hover {
     color: #1b5e20;
   }
 
-  .nav-menu.show {
-    display: flex;
-  }
-
   .menu-toggle {
     display: block;
+  }
+}
+
+.menu-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+#menuCloseBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Desktop reset */
+@media (min-width: 769px) {
+  .nav-menu {
+    position: static;
+    height: auto;
+    width: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .menu-overlay,
+  .menu-close {
+    display: none;
   }
 }
 
