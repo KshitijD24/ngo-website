@@ -55,10 +55,12 @@
   <div class="nav-container">
 
     <div class="nav-left" translate="no">
-      <img src="{{ url_for('static', filename='images/logo.jpeg') }}" 
+      <a href="/" class="logo-link" aria-label="Go to Home">
+        <img src="{{ url_for('static', filename='images/logo.jpeg') }}" 
            alt="NGO Aadhar Foundation Logo"
            class="nav-logo"
            loading="lazy">
+      </a>
       <span class="nav-title">NGO Aadhar Foundation</span>
     </div>
 
@@ -121,6 +123,51 @@
   </div>
 </div>
 
+<section class="site-footer">
+  <div class="footer-container">
+
+    <div class="footer-box">
+      <h3>About Us</h3>
+      <p>
+        NGO Aadhar Foundation is a non-profit organization based in Kalewadi,Pune focused on improving lives
+        through Education, Healthcare, Women Empowerment, Handicap Rehabilitation, and Tribal development.
+      </p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/programs">Our Programs</a></li>
+        <li><a href="/certifications">Certifications & Awards</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/donate">Donate</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Get In Touch</h3>
+      <i class="fa-solid fa-phone"></i>
+      <a href="tel:+919920028475">+91 99200 28475</a>
+      <br>
+      <i class="fa-solid fa-envelope"></i>
+      <a href="mailto:aadharfoun881@gmail.com">aadharfoun881@gmail.com</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/aadharfoun/"></a>
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/sunilahire9763?igsh=MWl6bGk0MHZvdTMzaA=="></a>
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 <!-- FOOTER -->
 <footer>
   © 2026 NGO Aadhar Foundation. All Rights Reserved.
@@ -176,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-
 
 <script>
 function openModal(img) {
