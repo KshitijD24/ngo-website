@@ -1240,98 +1240,57 @@ footer {
   }
 }
 
-/* =========================
-   ADMIN DASHBOARD (MODERN)
-========================= */
-
-.page-header {
-  margin-bottom: 25px;
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 40px auto;
 }
 
-.page-header h1 {
+.dashboard-title {
   font-size: 28px;
-  color: #1b5e20;
-}
-
-.page-header p {
-  color: #666;
-  font-size: 14px;
-}
-
-/* Cards */
-.card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  color: #2e7d32;
   margin-bottom: 20px;
 }
 
-.card-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #2e7d32;
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* Table */
-.data-table {
+.contact-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.data-table th {
+.contact-table th {
   background: #2e7d32;
   color: white;
-  padding: 12px;
+  padding: 14px;
   text-align: left;
 }
 
-.data-table td {
-  padding: 12px;
+.contact-table td {
+  padding: 14px;
   border-bottom: 1px solid #eee;
+  vertical-align: top;
 }
 
-.data-table tr:hover {
-  background: #f4faf4;
+.contact-table tr:hover {
+  background: #f1f8f4;
 }
 
-/* Message column */
 .message-cell {
-  max-width: 350px;
+  max-width: 400px;
   white-space: normal;
 }
 
-/* Buttons */
-.btn-primary {
-  background: #2e7d32;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.btn-secondary {
-  background: #1b5e20;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.btn-danger {
-  background: #c62828;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 6px;
-  text-decoration: none;
-}
-
-/* Action bar */
-.action-bar {
-  margin-top: 20px;
+.no-data {
+  background: #e8f5e9;
+  padding: 20px;
+  border-radius: 8px;
+  color: #1b5e20;
+  font-weight: 500;
 }
 
 /* =========================
