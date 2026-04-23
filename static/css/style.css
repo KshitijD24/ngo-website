@@ -1507,11 +1507,21 @@ footer {
   color: #d32f2f;
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
 .gallery-video {
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  aspect-ratio: 16 / 9;
   display: block;
-  margin: auto;
+  border-radius: 10px;
+  background: #000;
+  object-fit: contain;
 }
 
 .donate-modal {
