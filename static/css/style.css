@@ -518,6 +518,10 @@ footer {
   display: flex;
   list-style: none;
   gap: 28px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .nav-menu a {
@@ -526,6 +530,7 @@ footer {
   font-weight: 500;
   position: relative;
   padding-bottom: 4px;
+  white-space: nowrap;
 }
 
 .nav-menu a::after {
@@ -649,19 +654,36 @@ footer {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1100px) and (min-width: 769px) {
   .nav-container {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .nav-right {
-    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
   }
 
   .nav-menu {
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 14px;
+  }
+
+  .nav-menu a {
+    font-size: 13px;
+  }
+
+  .nav-title {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+  .nav-menu {
+    gap: 10px;
+  }
+
+  .nav-menu a {
+    font-size: 12px;
+  }
+
+  .nav-title {
+    font-size: 15px;
   }
 }
 
@@ -845,8 +867,9 @@ footer {
 
 .language-switcher {
   display: flex;
-  gap: 8px;
-  margin-left: 20px;
+  gap: 6px;
+  margin-left: 12px;
+  flex-shrink: 0;
 }
 
 .language-switcher button {
