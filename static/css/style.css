@@ -349,40 +349,22 @@ footer {
 
 
 
-.hero-content h1 {
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.hero-content p {
-  font-size: 18px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-}
-
-.hero-content {
-  position: absolute;
-  left: 80px;
-  bottom: 100px;
-  color: white;
-  max-width: 600px;
-  z-index: 2;
-}
-
 /* Outline button */
 .btn-outline {
   background: transparent;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  padding: 12px 32px;
+  min-width: 140px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-align: center;
 }
 
 .btn-outline:hover {
-  background: greenyellow;
+  background: #fff;
   color: #2e7d32;
+  border-color: #fff;
 }
 
 /* ===== TEAM SECTION ===== */
@@ -801,20 +783,13 @@ footer {
     object-fit: contain;       /* SHOW FULL IMAGE */          
   }
 
-  .hero-content {
-    position: absolute;
-    left: 20px;
-    bottom: 40px;
-    max-width: 90%;
-  }
-
   .hero-content h1 {
-    font-size: 26px;
+    font-size: 1.5rem;
     line-height: 1.3;
   }
 
   .hero-content p {
-    font-size: 15px;
+    font-size: 0.9rem;
   }
 
   .slider-dots {
@@ -1651,32 +1626,57 @@ html {
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
-  padding: 1rem;
+  padding: 1rem 2rem;
   width: 90%;
+  max-width: 680px;
+}
+
+.hero-content h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.8rem;
+  opacity: 0.92;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
 
   .hero-slider {
-    height: 60vh;   /* Prevents long vertical scroll */
+    height: 60vh;
   }
 
   .hero-content h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     line-height: 1.3;
   }
 
   .hero-content p {
     font-size: 0.9rem;
+    margin-bottom: 1.2rem;
   }
 
   .hero-buttons {
     flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
   .hero-buttons a {
     width: 100%;
+    max-width: 260px;
   }
 }
 
