@@ -52,8 +52,6 @@ nav a:hover {
   max-width: 1100px;
   margin: auto;
   padding: 40px 20px;
-  background: #ffffff;
-  border-radius: 14px;
 }
 
 /* =========================
@@ -817,7 +815,13 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 190px;
+  }
+
+  /* Hero slider - tall enough for content + buttons */
+  .hero-slider {
+    height: 75vh !important;
+    min-height: 420px;
   }
 
   /* Slider */
@@ -830,88 +834,97 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center center;
   }
 
+  /* Hero overlay content - centred */
   .hero-content {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    max-width: 85%;
-    width: 85%;
+    width: 88%;
+    max-width: 88%;
     text-align: center;
     padding: 0;
     bottom: auto;
   }
 
+  /* Dark scrim behind text for readability */
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    inset: -20px -24px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 12px;
+    z-index: -1;
+  }
+
   .hero-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     line-height: 1.3;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
 
   .hero-content p {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     letter-spacing: 0;
     line-height: 1.5;
+    margin-bottom: 14px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
   }
 
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     align-items: center;
-    margin-top: 12px;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
   }
 
   .hero-buttons a {
-    width: 80%;
+    width: auto;
+    min-width: 110px;
     text-align: center;
-    padding: 10px 16px;
-    font-size: 14px;
+    padding: 9px 18px;
+    font-size: 13px;
+    border-radius: 6px;
   }
 
   .slider-dots {
-    bottom: 12px;
+    bottom: 14px;
+    z-index: 5;
   }
 
-  /* Social sidebar - smaller on mobile */
+  /* Social sidebar → horizontal strip ABOVE bottom edge, not sticky bottom */
   .social-sidebar {
+    position: fixed;
     top: auto;
     bottom: 0;
+    left: 0;
     flex-direction: row;
     width: 100%;
-    z-index: 999;
+    z-index: 900;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
   }
 
   .social-sidebar a {
     width: 25%;
-    height: 40px;
-    font-size: 16px;
+    height: 44px;
+    font-size: 17px;
+    flex: 1;
   }
 
   .social-sidebar a:hover {
-    width: 25%;
+    width: auto;
+    flex: 1;
   }
 
-  /* Mobile language inside menu */
-  .mobile-lang-switcher {
-    display: flex !important;
-    gap: 8px;
-    padding-top: 10px;
-    border-top: 1px solid #e0e0e0;
-    margin-top: 6px;
-    list-style: none;
-  }
-
-  .mobile-lang-switcher button {
-    background: transparent;
-    border: 1.5px solid #2e7d32;
-    color: #2e7d32;
-    padding: 5px 12px;
-    border-radius: 5px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
+  /* Add bottom padding to page so social bar doesn't cover footer */
+  body {
+    padding-bottom: 44px;
   }
 
   /* Focus section */
@@ -951,11 +964,6 @@ footer {
     gap: 20px;
     padding: 30px 16px;
   }
-
-  /* Container padding */
-  .container {
-    padding: 0 16px;
-  }
 }
 
 /* ===== HERO IMAGE ZOOM ANIMATION ===== */
@@ -984,25 +992,53 @@ footer {
   flex-shrink: 0;
 }
 
+.language-switcher button {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.75);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s;
+}
+
+.language-switcher button:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: #fff;
+}
+
+/* Mobile: hide desktop switcher, show one inside menu */
+.mobile-lang-switcher {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .language-switcher {
     display: none;
   }
-}
-
-.language-switcher button {
-  background: transparent;
-  border: 1px solid #fff;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 5px;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.language-switcher button:hover {
-  background: white;
-  color: #2e7d32;
+  .mobile-lang-switcher {
+    display: flex !important;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid #e8f5e9;
+    margin-top: 8px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+  .mobile-lang-switcher button {
+    background: transparent;
+    border: 1.5px solid #2e7d32;
+    color: #2e7d32;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
 /* Hide Google ugly parts */
@@ -1963,11 +1999,14 @@ html {
 
 /* ===== HERO SLIDER FIX (DESKTOP + MOBILE) ===== */
 
+/* Hero slider must be full-width, outside any container */
 .hero-slider {
   position: relative;
   width: 100%;
   height: 85vh;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .slider {
