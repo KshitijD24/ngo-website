@@ -1011,6 +1011,11 @@ footer {
   display: none !important;
 }
 
+/* Hide Google Translate widget container */
+#google_translate_element {
+  display: none !important;
+}
+
 /* ===== FOCUS AREAS ===== */
 
 .focus-section {
