@@ -28,6 +28,19 @@
 
     <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+      /* Force hide Google Translate widget */
+      #google_translate_element,
+      .goog-te-banner-frame,
+      .goog-te-menu-frame,
+      .skiptranslate {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      body { top: 0 !important; }
+    </style>
 
 </head>
 <body>
@@ -187,12 +200,12 @@
 <!-- SCRIPTS -->
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-<div id="google_translate_element" style="display:none;"></div>
+<div id="google_translate_element" style="display:none; visibility:hidden; position:absolute; top:-9999px; left:-9999px; width:0; height:0; overflow:hidden;"></div>
 
 <script>
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
-    { pageLanguage: 'en', includedLanguages: 'en,hi,mr', autoDisplay: false },
+    { pageLanguage: 'en', includedLanguages: 'en,hi,mr', autoDisplay: false, layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
     'google_translate_element'
   );
 }
