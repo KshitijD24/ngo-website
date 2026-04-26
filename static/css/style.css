@@ -347,30 +347,7 @@ footer {
 
 
 
-.hero-content h1 {
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.hero-content p {
-  font-size: 18px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 15px;
-}
-
-.hero-content {
-  position: absolute;
-  left: 80px;
-  bottom: 100px;
-  color: white;
-  max-width: 600px;
-  z-index: 2;
-}
+/* hero-content & hero-buttons defined in HERO SLIDER FIX block below */
 
 /* Outline button */
 .btn-outline {
@@ -818,87 +795,9 @@ footer {
     max-width: 190px;
   }
 
-  /* Hero slider - tall enough for content + buttons */
-  .hero-slider {
-    height: 75vh !important;
-    min-height: 420px;
-  }
+  /* Hero slider rules handled in HERO SLIDER — MASTER DEFINITION block */
 
-  /* Slider */
-  .slider {
-    height: 100%;
-  }
-
-  .slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-
-  /* Hero overlay content - centred */
-  .hero-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 88%;
-    max-width: 88%;
-    text-align: center;
-    padding: 0;
-    bottom: auto;
-  }
-
-  /* Dark scrim behind text for readability */
-  .hero-content::before {
-    content: '';
-    position: absolute;
-    inset: -20px -24px;
-    background: rgba(0,0,0,0.25);
-    border-radius: 12px;
-    z-index: -1;
-  }
-
-  .hero-content h1 {
-    font-size: 1.45rem;
-    line-height: 1.3;
-    margin-bottom: 8px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-  }
-
-  .hero-content p {
-    font-size: 0.82rem;
-    letter-spacing: 0;
-    line-height: 1.5;
-    margin-bottom: 14px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
-  }
-
-  .hero-buttons {
-    flex-direction: row;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-
-  .hero-buttons a {
-    width: auto;
-    min-width: 110px;
-    text-align: center;
-    padding: 9px 18px;
-    font-size: 13px;
-    border-radius: 6px;
-  }
-
-  .slider-dots {
-    bottom: 14px;
-    z-index: 5;
-  }
-
-  /* Social sidebar → horizontal strip ABOVE bottom edge, not sticky bottom */
+  /* Social sidebar → horizontal bottom strip */
   .social-sidebar {
     position: fixed;
     top: auto;
@@ -922,7 +821,7 @@ footer {
     flex: 1;
   }
 
-  /* Add bottom padding to page so social bar doesn't cover footer */
+  /* Add bottom padding so social bar doesn't cover footer */
   body {
     padding-bottom: 44px;
   }
@@ -1997,16 +1896,17 @@ html {
     }
 }
 
-/* ===== HERO SLIDER FIX (DESKTOP + MOBILE) ===== */
+/* ===== HERO SLIDER — MASTER DEFINITION ===== */
 
-/* Hero slider must be full-width, outside any container */
 .hero-slider {
   position: relative;
   width: 100%;
   height: 85vh;
+  min-height: 500px;
   overflow: hidden;
   margin: 0;
   padding: 0;
+  display: block;
 }
 
 .slider {
@@ -2015,38 +1915,123 @@ html {
   height: 100%;
 }
 
-/* Images */
 .slide {
-  position: absolute;     /* KEY FIX */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
+  z-index: 0;
 }
 
-/* Active slide */
 .slide.active {
   opacity: 1;
   z-index: 1;
 }
 
-/* Overlay content */
+/* ── Text overlay ── */
 .hero-content {
   position: absolute;
   z-index: 2;
-  top: 50%;
+  bottom: 120px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   text-align: center;
   color: #fff;
-  padding: 1rem;
-  width: 90%;
+  width: 80%;
+  max-width: 800px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.55);
 }
 
-/* Mobile hero handled in main @media (max-width: 768px) block above */
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-buttons a {
+  min-width: 140px;
+  text-align: center;
+  padding: 12px 28px;
+  font-size: 15px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* Slider dots */
+.slider-dots {
+  position: absolute;
+  bottom: 22px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 5;
+}
+
+/* ── Mobile overrides ── */
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 75vh;
+    min-height: 400px;
+  }
+
+  .slide {
+    object-position: center top;
+  }
+
+  .hero-content {
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 88%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-content p {
+    font-size: 0.82rem;
+    margin-bottom: 14px;
+    letter-spacing: 0;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .hero-buttons a {
+    min-width: 100px;
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+
+  .slider-dots {
+    bottom: 14px;
+  }
+}
 
 .site-footer {
   background: #2f3b43; /* Professional dark slate */
