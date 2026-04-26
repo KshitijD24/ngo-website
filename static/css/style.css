@@ -52,6 +52,8 @@ nav a:hover {
   max-width: 1100px;
   margin: auto;
   padding: 40px 20px;
+  background: #ffffff;
+  border-radius: 14px;
 }
 
 /* =========================
@@ -347,7 +349,30 @@ footer {
 
 
 
-/* hero-content & hero-buttons defined in HERO SLIDER FIX block below */
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 18px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-content {
+  position: absolute;
+  left: 80px;
+  bottom: 100px;
+  color: white;
+  max-width: 600px;
+  z-index: 2;
+}
 
 /* Outline button */
 .btn-outline {
@@ -792,38 +817,101 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 190px;
+    max-width: 200px;
   }
 
-  /* Hero slider rules handled in HERO SLIDER — MASTER DEFINITION block */
+  /* Slider */
+  .slider {
+    height: 100%;
+  }
 
-  /* Social sidebar → horizontal bottom strip */
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 85%;
+    width: 85%;
+    text-align: center;
+    padding: 0;
+    bottom: auto;
+  }
+
+  .hero-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .hero-content p {
+    font-size: 0.85rem;
+    letter-spacing: 0;
+    line-height: 1.5;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-top: 12px;
+  }
+
+  .hero-buttons a {
+    width: 80%;
+    text-align: center;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .slider-dots {
+    bottom: 12px;
+  }
+
+  /* Social sidebar - smaller on mobile */
   .social-sidebar {
-    position: fixed;
     top: auto;
     bottom: 0;
-    left: 0;
     flex-direction: row;
     width: 100%;
-    z-index: 900;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+    z-index: 999;
   }
 
   .social-sidebar a {
     width: 25%;
-    height: 44px;
-    font-size: 17px;
-    flex: 1;
+    height: 40px;
+    font-size: 16px;
   }
 
   .social-sidebar a:hover {
-    width: auto;
-    flex: 1;
+    width: 25%;
   }
 
-  /* Add bottom padding so social bar doesn't cover footer */
-  body {
-    padding-bottom: 44px;
+  /* Mobile language inside menu */
+  .mobile-lang-switcher {
+    display: flex !important;
+    gap: 8px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 6px;
+    list-style: none;
+  }
+
+  .mobile-lang-switcher button {
+    background: transparent;
+    border: 1.5px solid #2e7d32;
+    color: #2e7d32;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
   }
 
   /* Focus section */
@@ -863,6 +951,11 @@ footer {
     gap: 20px;
     padding: 30px 16px;
   }
+
+  /* Container padding */
+  .container {
+    padding: 0 16px;
+  }
 }
 
 /* ===== HERO IMAGE ZOOM ANIMATION ===== */
@@ -891,53 +984,25 @@ footer {
   flex-shrink: 0;
 }
 
-.language-switcher button {
-  background: transparent;
-  border: 1.5px solid rgba(255,255,255,0.75);
-  color: white;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.2s;
-}
-
-.language-switcher button:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: #fff;
-}
-
-/* Mobile: hide desktop switcher, show one inside menu */
-.mobile-lang-switcher {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .language-switcher {
     display: none;
   }
-  .mobile-lang-switcher {
-    display: flex !important;
-    gap: 8px;
-    padding-top: 12px;
-    border-top: 1px solid #e8f5e9;
-    margin-top: 8px;
-    list-style: none;
-    flex-wrap: wrap;
-  }
-  .mobile-lang-switcher button {
-    background: transparent;
-    border: 1.5px solid #2e7d32;
-    color: #2e7d32;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-  }
+}
+
+.language-switcher button {
+  background: transparent;
+  border: 1px solid #fff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.language-switcher button:hover {
+  background: white;
+  color: #2e7d32;
 }
 
 /* Hide Google ugly parts */
@@ -1896,17 +1961,13 @@ html {
     }
 }
 
-/* ===== HERO SLIDER — MASTER DEFINITION ===== */
+/* ===== HERO SLIDER FIX (DESKTOP + MOBILE) ===== */
 
 .hero-slider {
   position: relative;
   width: 100%;
   height: 85vh;
-  min-height: 500px;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
-  display: block;
 }
 
 .slider {
@@ -1915,123 +1976,38 @@ html {
   height: 100%;
 }
 
+/* Images */
 .slide {
-  position: absolute;
+  position: absolute;     /* KEY FIX */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
-  z-index: 0;
 }
 
+/* Active slide */
 .slide.active {
   opacity: 1;
   z-index: 1;
 }
 
-/* ── Text overlay ── */
+/* Overlay content */
 .hero-content {
   position: absolute;
   z-index: 2;
-  bottom: 120px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
-  width: 80%;
-  max-width: 800px;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.55);
+  padding: 1rem;
+  width: 90%;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 12px;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 24px;
-  letter-spacing: 0.5px;
-  line-height: 1.6;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.hero-buttons a {
-  min-width: 140px;
-  text-align: center;
-  padding: 12px 28px;
-  font-size: 15px;
-  border-radius: 6px;
-  font-weight: 600;
-}
-
-/* Slider dots */
-.slider-dots {
-  position: absolute;
-  bottom: 22px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  z-index: 5;
-}
-
-/* ── Mobile overrides ── */
-@media (max-width: 768px) {
-  .hero-slider {
-    height: 75vh;
-    min-height: 400px;
-  }
-
-  .slide {
-    object-position: center top;
-  }
-
-  .hero-content {
-    bottom: auto;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 88%;
-  }
-
-  .hero-content h1 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }
-
-  .hero-content p {
-    font-size: 0.82rem;
-    margin-bottom: 14px;
-    letter-spacing: 0;
-  }
-
-  .hero-buttons {
-    flex-direction: row;
-    gap: 10px;
-  }
-
-  .hero-buttons a {
-    min-width: 100px;
-    padding: 9px 16px;
-    font-size: 13px;
-  }
-
-  .slider-dots {
-    bottom: 14px;
-  }
-}
+/* Mobile hero handled in main @media (max-width: 768px) block above */
 
 .site-footer {
   background: #2f3b43; /* Professional dark slate */
